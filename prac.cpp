@@ -1,23 +1,25 @@
 #include <iostream>
 using namespace std;
+#define N 3
+
 int main()
 {   
-    int a[3][3];
-    int b[3][3];
-    int c[3][3];
+    int a[N][N];
+    int b[N][N];
+    int c[N][N];
     int choice;
 
     cout << "Enter elements for matrix A: ";
-    for (int i = 0; i < 3; i++)
+    for (int i = 0; i < N; i++)
     {
-        for (int j = 0; j < 3; j++)
+        for (int j = 0; j < N; j++)
             cin >> a[i][j];
     }
     
     cout << "\nEnter elements for matrix B: ";
-    for (int i = 0; i < 3; i++)
+    for (int i = 0; i < N; i++)
     {
-        for (int j = 0; j < 3; j++)
+        for (int j = 0; j < N; j++)
             cin >> b[i][j];
     }
     
@@ -34,16 +36,16 @@ int main()
         switch (choice)
         {
             case 1:
-            for (int i = 0; i < 3; i++)
+            for (int i = 0; i < N; i++)
             {
-                for(int j = 0; j < 3; j++)
+                for(int j = 0; j < N; j++)
                     c[i][j] = a[i][j] + b[i][j];
             }
 
             cout << "Addition of A and B: \n";
-            for (int i = 0; i < 3; i++)
+            for (int i = 0; i < N; i++)
             {
-                for (int j = 0; j < 3; j++)
+                for (int j = 0; j < N; j++)
                     cout << c[i][j] << "  ";                
                 
                 cout << "\n";
@@ -51,16 +53,16 @@ int main()
             break;
      
             case 2:
-            for (int i = 0; i < 3; i++)
+            for (int i = 0; i < N; i++)
             {
-                for(int j = 0; j < 3; j++)
+                for(int j = 0; j < N; j++)
                     c[i][j] = a[i][j] - b[i][j];
             }
 
             cout << "Subtraction of A and B: \n";
-            for (int i = 0; i < 3; i++)
+            for (int i = 0; i < N; i++)
             {
-                for (int j = 0; j < 3; j++)
+                for (int j = 0; j < N; j++)
                     cout << c[i][j] << "  ";                
                 
                 cout << "\n";
@@ -72,16 +74,16 @@ int main()
             break;
 
             case 4:
-            for (int i = 0; i < 3; i++)
+            for (int i = 0; i < N; i++)
             {
-                for(int j = 0; j < 3; j++)
+                for(int j = 0; j < N; j++)
                     c[i][j] = a[j][i];
             }
 
             cout << "Transpose of A: \n";
-            for (int i = 0; i < 3; i++)
+            for (int i = 0; i < N; i++)
             {
-                for (int j = 0; j < 3; j++)
+                for (int j = 0; j < N; j++)
                     cout << c[i][j] << "  ";                
                 
                 cout << "\n";
