@@ -1,20 +1,3 @@
-/* #include <iostream>
-#include <vector>
-using namespace std;
-int main()
-{  
-    vector <int> v = {12,13,45,44,89,00};
-    v.push_back(5);
-    v.push_back(3);
-
-    for(int i : v)
-        cout << i << " ";
-
-    cout << "\n" << v.size() << " " << v.capacity() << endl; 
-    cout << v.front() << " " << v.back() << endl;
-    return 0;
-} */
-
 #include <iostream>
 using namespace std;
 int main()
