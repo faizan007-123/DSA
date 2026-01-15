@@ -70,7 +70,26 @@ int main()
             break;
      
             case 3:
+            for (int i = 0; i < N; i++)
+            {
+                for (int j = 0; j < N; j++)
+                {
+                    c[i][j] = 0;
+                    for (int k = 0; k < N; k++)
+                    {
+                        c[i][j] += a[i][k] * b[k][j];
+                    }
+                }
+            }
 
+            cout << "Multiplication of A and B: \n";
+            for (int i = 0; i < N; i++)
+            {
+                for (int j = 0; j < N; j++)
+                    cout << c[i][j] << "  ";
+                
+                cout << "\n";
+            }
             break;
 
             case 4:
@@ -88,6 +107,10 @@ int main()
                 
                 cout << "\n";
             }
+            break;
+
+            case 5:
+            cout << "Exiting...\n";
             break;
 
             default:
