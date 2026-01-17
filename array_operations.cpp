@@ -10,7 +10,6 @@ int main()
     
     int *p = new int[n];
     
-    
     cout << "Enter array elements: " << endl;
     for (int i = 0; i < n; i++)
     cin >> p[i];
@@ -112,8 +111,8 @@ int main()
             cout << "New array: \n";
             for(int a = 0; a < n - 1; a++)
                 cout << t[a] << " ";
-
-        
+            
+            cout << "\n";
             break;
         }
 
@@ -127,3 +126,4 @@ int main()
 
     return 0;
 }
+
