@@ -26,6 +26,7 @@ int main()
     else
         cout << "Target value not found...\n";
 
+    delete[] x;
     return 0;
 }
 
@@ -39,3 +40,4 @@ int linearSearch(int *p,int a,int t)
 
     return 0;
 }
+
