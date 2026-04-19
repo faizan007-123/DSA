@@ -141,14 +141,5 @@ void display(vector<int> &v)
 
 void size(vector<int> &v)
 {
-    if(front == -1)
-        cout << "Size: 0\n"; 
-    else {
-        int count = 0;
-
-        for (int i = front; i <= rear; i++)
-            count = count + 1;
-
-        cout << "Size: " << count << "\n";
-    }
+    cout << "Size: " << v.size() << endl;
 }
