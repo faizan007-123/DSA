@@ -25,8 +25,8 @@ int main()
         cout << "3.Peek (Top) \n";
         cout << "4.Display \n";
         cout << "5.Exit \n";
+        
         cout << "Please enter your choice: \n";
-
         cin >> ch;
 
         switch (ch)
@@ -70,9 +70,8 @@ void PushElement(int *x, int a)
 {
     if (top == (a - 1))
     {
-        cout << "Cannot push element due to stack overflow \n"
-             << "The Program will exit...";
-        exit(0);
+        cout << "Stack is full...\n";
+        return;
     }
     else
     {
@@ -89,9 +88,8 @@ void PopElement(int *y)
 {
     if (top == -1)
     {
-        cout << "Cannot pop element due to stack underflow \n"
-             << "The Program will exit...";
-        exit(0);
+        cout << "Stack is empty...\n";
+        return;
     }
     else
     {
@@ -105,22 +103,24 @@ void PopElement(int *y)
 
 void PeekElement(int *z)
 {
-    if (top == -1)
-        cout << "Cannot peek element due to stack underflow \n";
-    else
+    if (top == -1) 
+    {
+        cout << "Stack is empty...\n";
+        return;
+    }
         cout << z[top] << endl;
 }
 
 void DisplayElements(int *q, int b)
 {
-    if (top == -1)
-        cout << "Stack is empty...\n";
-    else
+    if (top == -1) 
     {
-        cout << "Stack Elements (from top to bottom): \n[";
+        cout << "Stack is empty...\n";
+        return;
+    }
+        cout << "Stack Elements (from top to bottom): \n[ ";
         for (int j = top; j > -1; j--)
             cout << q[j] << " ";
 
         cout << "]\n";
-    }
 }
