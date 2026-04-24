@@ -1,22 +1,18 @@
 #include <iostream>
+#include <vector>
 using namespace std;
 
-void PushElement(int *, int);
-void PopElement(int *);
-void PeekElement(int *);
-void DisplayElements(int *, int);
+void PushElement(vector<int> &);
+void PopElement(vector<int> &);
+void PeekElement(vector<int> &);
+void DisplayElements(vector<int> &);
 
 int top = -1;
 
 int main()
 {
-    int n;
+    vector<int> vec;
     int ch;
-
-    cout << "Enter size of stack: ";
-    cin >> n;
-
-    int *arr = new int[n];
 
     do
     {
@@ -33,23 +29,19 @@ int main()
         {
 
         case 1:
-
-            PushElement(arr, n);
+            PushElement(vec);
             break;
 
         case 2:
-
-            PopElement(arr);
+            PopElement(vec);
             break;
 
         case 3:
-
-            PeekElement(arr);
+            PeekElement(vec);
             break;
 
         case 4:
-
-            DisplayElements(arr, n);
+            DisplayElements(vec);
             break;
 
         case 5:
@@ -66,25 +58,21 @@ int main()
     return 0;
 }
 
-void PushElement(int *x, int a)
+void PushElement(vector<int> &v)
 {
-    if (top == (a - 1))
-    {
-        cout << "Stack is full...\n";
-        return;
-    }
-    else
-    {
-        top++;
+    int n;
+    
+    cout << "Enter a value: ";
+    cin >> n;
+    
+    v.push_back(n);
 
-        cout << "Enter element to be inserted: ";
-        cin >> x[top];
+    cout << "Element inserted successfully...\n";
+    top++;
 
-        cout << "Element inserted successfully...\n";
-    }
 }
 
-void PopElement(int *y)
+void PopElement(vector<int> &v)
 {
     if (top == -1)
     {
@@ -93,34 +81,34 @@ void PopElement(int *y)
     }
     else
     {
-        y[top] = 0;
-
+        v.pop_back();
         top--;
-
         cout << "Element deleted successfully...\n";
     }
 }
 
-void PeekElement(int *z)
+void PeekElement(vector<int> &v)
 {
     if (top == -1) 
     {
         cout << "Stack is empty...\n";
         return;
     }
-        cout << z[top] << endl;
+        cout << "Top Element: " << v[top] << endl;
 }
 
-void DisplayElements(int *q, int b)
+void DisplayElements(vector<int> &v)
 {
     if (top == -1) 
     {
         cout << "Stack is empty...\n";
         return;
     }
-        cout << "Stack Elements (from top to bottom): \n[ ";
-        for (int j = top; j > -1; j--)
-            cout << q[j] << " ";
 
-        cout << "]\n";
+    cout << "Stack Elements (from top to bottom): \n[ ";
+    
+    for(int i = top; i != -1; i--)
+        cout << v[i] << " ";
+
+    cout << "]\n";    
 }
