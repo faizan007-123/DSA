@@ -2,124 +2,117 @@
 using namespace std;
 #define N 3
 
+
+void inputMatrix(int mat[N][N], char name)
+{
+    cout << "Enter elements for matrix " << name << ":\n";
+    for (int i = 0; i < N; i++)
+        for (int j = 0; j < N; j++)
+            cin >> mat[i][j];
+}
+
+void displayMatrix(int mat[N][N])
+{
+    for (int i = 0; i < N; i++)
+    {
+        for (int j = 0; j < N; j++)
+            cout << mat[i][j] << " ";
+        cout << endl;
+    }
+}
+
+void addMatrix(int a[N][N], int b[N][N], int c[N][N])
+{
+    for (int i = 0; i < N; i++)
+        for (int j = 0; j < N; j++)
+            c[i][j] = a[i][j] + b[i][j];
+
+    cout << "Addition of A and B:\n";
+    displayMatrix(c);
+}
+
+void subtractMatrix(int a[N][N], int b[N][N], int c[N][N])
+{
+    for (int i = 0; i < N; i++)
+        for (int j = 0; j < N; j++)
+            c[i][j] = a[i][j] - b[i][j];
+
+    cout << "Subtraction of A and B:\n";
+    displayMatrix(c);
+}
+
+void multiplyMatrix(int a[N][N], int b[N][N], int c[N][N])
+{
+    for (int i = 0; i < N; i++)
+    {
+        for (int j = 0; j < N; j++)
+        {
+            c[i][j] = 0;
+            for (int k = 0; k < N; k++)
+                c[i][j] += a[i][k] * b[k][j];
+        }
+    }
+
+    cout << "Multiplication of A and B:\n";
+    displayMatrix(c);
+}
+
+void transposeMatrix(int a[N][N], int c[N][N])
+{
+    for (int i = 0; i < N; i++)
+        for (int j = 0; j < N; j++)
+            c[i][j] = a[j][i];
+
+    cout << "Transpose of A:\n";
+    displayMatrix(c);
+}
+
 int main()
-{   
-    int a[N][N];
-    int b[N][N];
-    int c[N][N];
+{
+    int a[N][N], b[N][N], c[N][N];
     int choice;
 
-    cout << "Enter elements for matrix A: ";
-    for (int i = 0; i < N; i++)
-    {
-        for (int j = 0; j < N; j++)
-            cin >> a[i][j];
-    }
-    
-    cout << "\nEnter elements for matrix B: ";
-    for (int i = 0; i < N; i++)
-    {
-        for (int j = 0; j < N; j++)
-            cin >> b[i][j];
-    }
-    
+    inputMatrix(a, 'A');
+    inputMatrix(b, 'B');
+
     do
     {
-        cout << "Enter your choice: \n";
-        cout << "1. Addition of A and B \n";
-        cout << "2. Subtraction of A and B \n"; 
-        cout << "3. Multiplication of A and B \n"; 
-        cout << "4. Transpose of A \n";
-        cout << "5. Exit \n"; 
+        cout << "\nMenu:\n";
+        cout << "1. Addition\n";
+        cout << "2. Subtraction\n";
+        cout << "3. Multiplication\n";
+        cout << "4. Transpose of A\n";
+        cout << "5. Exit\n";
+        cout << "Enter your choice: ";
         cin >> choice;
 
         switch (choice)
         {
             case 1:
-            for (int i = 0; i < N; i++)
-            {
-                for(int j = 0; j < N; j++)
-                    c[i][j] = a[i][j] + b[i][j];
-            }
+                addMatrix(a, b, c);
+                break;
 
-            cout << "Addition of A and B: \n";
-            for (int i = 0; i < N; i++)
-            {
-                for (int j = 0; j < N; j++)
-                    cout << c[i][j] << "  ";                
-                
-                cout << "\n";
-            }
-            break;
-     
             case 2:
-            for (int i = 0; i < N; i++)
-            {
-                for(int j = 0; j < N; j++)
-                    c[i][j] = a[i][j] - b[i][j];
-            }
+                subtractMatrix(a, b, c);
+                break;
 
-            cout << "Subtraction of A and B: \n";
-            for (int i = 0; i < N; i++)
-            {
-                for (int j = 0; j < N; j++)
-                    cout << c[i][j] << "  ";                
-                
-                cout << "\n";
-            }
-            break;
-     
             case 3:
-            for (int i = 0; i < N; i++)
-            {
-                for (int j = 0; j < N; j++)
-                {
-                    c[i][j] = 0;
-                    for (int k = 0; k < N; k++)
-                    {
-                        c[i][j] += a[i][k] * b[k][j];
-                    }
-                }
-            }
-
-            cout << "Multiplication of A and B: \n";
-            for (int i = 0; i < N; i++)
-            {
-                for (int j = 0; j < N; j++)
-                    cout << c[i][j] << "  ";
-                
-                cout << "\n";
-            }
-            break;
+                multiplyMatrix(a, b, c);
+                break;
 
             case 4:
-            for (int i = 0; i < N; i++)
-            {
-                for(int j = 0; j < N; j++)
-                    c[i][j] = a[j][i];
-            }
-
-            cout << "Transpose of A: \n";
-            for (int i = 0; i < N; i++)
-            {
-                for (int j = 0; j < N; j++)
-                    cout << c[i][j] << "  ";                
-                
-                cout << "\n";
-            }
-            break;
+                transposeMatrix(a, c);
+                break;
 
             case 5:
-            cout << "Exiting...\n";
-            break;
+                cout << "Exiting...\n";
+                break;
 
             default:
-            cout << "Invalid Input...\n";
-            cout << "Try again...\n";
-            break;
+                cout << "Invalid Input...\n";
         }
 
     } while (choice != 5);
-    
+
     return 0;
 }
