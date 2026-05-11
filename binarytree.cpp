@@ -1,11 +1,11 @@
 #include <iostream>
-#include <queue>
+#include <vector>
 using namespace std;
 
 struct Node {
     int data;
-    Node* left;
-    Node* right;
+    Node *left;
+    Node *right;
 
     Node(int val) {
         data = val;
@@ -13,68 +13,68 @@ struct Node {
     }
 };
 
-void inorder(Node* root) {
-    if (root == NULL) return;
-    inorder(root->left);
-    cout << root->data << " ";
-    inorder(root->right);
-}
+static int idx = -1;
 
-void preorder(Node* root) {
-    if (root == NULL) return;
-    cout << root->data << " ";
-    preorder(root->left);
-    preorder(root->right);
-}
+Node* buildTree(vector<int> preorder) {
+    idx++;
 
-void postorder(Node* root) {
-    if (root == NULL) return;
-    postorder(root->left);
-    postorder(root->right);
-    cout << root->data << " ";
-}
+    if(preorder[idx] == -1) 
+        return NULL;
 
-Node* buildTree() {
-    int val;
-    cin >> val;
+    Node *root = new Node(preorder[idx]);
 
-    if (val == -1) return NULL;
-
-    Node* root = new Node(val);
-    queue<Node*> q;
-    q.push(root);
-
-    while (!q.empty()) {
-        Node* current = q.front();
-        q.pop();
-
-        int leftVal, rightVal;
-        cin >> leftVal;
-        if (leftVal != -1) {
-            current->left = new Node(leftVal);
-            q.push(current->left);
-        }
-
-        cin >> rightVal;
-        if (rightVal != -1) {
-            current->right = new Node(rightVal);
-            q.push(current->right);
-        }
-    }
+    root->left = buildTree(preorder);
+    root->right = buildTree(preorder);
 
     return root;
 }
 
-int main() {
-    Node* root = buildTree();
+void preOrder(Node *root) {
+    if(root == NULL)
+        return;
 
-    inorder(root);
+    cout << root->data << " ";
+
+    preOrder(root->left);
+    preOrder(root->right);
+
+}
+
+void inOrder(Node *root) {
+    if(root == NULL)
+        return;
+
+    inOrder(root->left);
+    cout << root->data << " ";
+    inOrder(root->right);
+}
+
+void postOrder(Node *root) {
+    if(root == NULL)
+        return;
+
+    postOrder(root->left);
+    postOrder(root->right);
+    cout << root->data << " ";
+}
+
+int main()
+{
+    vector<int> preorder = {1,2,-1,-1,3,4,-1,-1,5,-1,-1};
+    
+    Node *root = buildTree(preorder);
+    
+    cout << "Pre-Order Traversal: ";
+    preOrder(root);
     cout << endl;
 
-    preorder(root);
+    cout << "In-Order Traversal: ";
+    inOrder(root);
     cout << endl;
 
-    postorder(root);
+    cout << "Post-Order Traversal: ";
+    postOrder(root);
+    cout << endl;
 
     return 0;
 }
